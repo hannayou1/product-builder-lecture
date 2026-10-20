@@ -1,0 +1,135 @@
+<!DOCTYPE html>https://github.com/hannayou1/product-builder-lecture.git
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="인공지능 알고리즘으로 추천하는 행운의 로또 번호 생성기">
+    <title>Lucky Lotto — 당신의 행운을 잡으세요</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a class="logo" href="#">lucky<span>lotto</span>.</a>
+        <nav aria-label="주 메뉴">
+            <a href="#generator">번호 생성</a>
+            <a href="#how-it-works">사용 방법</a>
+            <a class="nav-cta" href="https://www.dhlottery.co.kr/" target="_blank" rel="noopener noreferrer">동행복권 바로가기 ↗</a>
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-label="다크 모드로 전환" title="테마 변경">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero wrap reveal">
+            <div>
+                <div class="eyebrow"><span class="dot"></span> YOUR LUCK STARTS HERE</div>
+                <h1>오늘의 행운을<br><em>지금 확인하세요.</em></h1>
+                <p class="intro">복잡한 분석 대신, 행운의 기운을 담아 추천합니다.<br>버튼 하나로 당신의 인생을 바꿀 6개의 숫자를 만나보세요.</p>
+                <div class="actions">
+                    <a class="btn primary" href="#generator">지금 번호 받기 ↓</a>
+                    <a class="btn secondary" href="#how-it-works">알고리즘 정보</a>
+                </div>
+                <p class="small-note">#로또6/45 #번호추천 #행운아이템</p>
+            </div>
+            <div class="art">
+                <div class="terminal">
+                    <div class="bar"><i></i><i></i><i></i><span>lotto-engine.js</span></div>
+                    <div class="code">
+                        <span class="comment">// 행운의 알고리즘 가동 중...</span><br>
+                        <span class="keyword">const</span> luck = Math.random();<br>
+                        <span class="keyword">const</span> numbers = [];<br><br>
+                        <span class="keyword">while</span> (numbers.length < 6) {<br>
+                        &nbsp; <span class="keyword">const</span> n = Math.floor(luck * 45) + 1;<br>
+                        &nbsp; <span class="keyword">if</span> (!numbers.includes(n)) numbers.push(n);<br>
+                        }<br><br>
+                        console.log(<span class="string">"당신의 당첨을 기원합니다! ✨"</span>);
+                    </div>
+                    <div class="result">✓ Analysis Complete. Good Luck!</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="ribbon">
+            <div class="wrap">
+                <span>WIN THE JACKPOT</span> ✳ <span>LUCKY NUMBERS</span> ✳ <span>DREAM BIG</span> ✳ <span>TRY YOUR LUCK</span> ✳ <span>WIN THE JACKPOT</span>
+            </div>
+        </div>
+
+        <section id="generator" class="section wrap reveal">
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">01 / GENERATOR</div>
+                    <h2>번호 생성기</h2>
+                </div>
+                <p>버튼을 누를 때마다 새로운 5줄의 번호를 추천합니다.<br>마음에 드는 번호가 나올 때까지 도전하세요!</p>
+            </div>
+            <div class="lotto-container">
+                <div id="lotto-display" class="lotto-display">
+                    <p class="placeholder-text">행운의 번호를 확인하려면 아래 버튼을 누르세요.</p>
+                </div>
+                <button id="lotto-btn" class="btn primary lotto-btn">행운의 번호 5줄 생성하기 🍀</button>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="section wrap reveal">
+            <div class="section-head">
+                <div>
+                    <div class="eyebrow">02 / ABOUT</div>
+                    <h2>어떻게 작동하나요?</h2>
+                </div>
+                <p>Lucky Lotto는 순수 무작위 알고리즘을 사용하여<br>공정한 추천 번호를 제공합니다.</p>
+            </div>
+            <div class="cards">
+                <article class="card">
+                    <span class="num">STEP 01</span>
+                    <div class="icon">🎲</div>
+                    <h3>완전 무작위 추출</h3>
+                    <p>특정 패턴에 치우치지 않는 JavaScript의 난수 생성 엔진을 사용하여 1부터 45 사이의 숫자를 뽑습니다.</p>
+                </article>
+                <article class="card">
+                    <span class="num">STEP 02</span>
+                    <div class="icon">⚖️</div>
+                    <h3>중복 제거 필터</h3>
+                    <p>생성된 숫자 중 중복된 값이 없는지 실시간으로 검증하여 항상 고유한 6개의 숫자를 완성합니다.</p>
+                </article>
+                <article class="card">
+                    <span class="num">STEP 03</span>
+                    <div class="icon">📊</div>
+                    <h3>오름차순 정렬</h3>
+                    <p>추출된 번호를 크기순으로 자동 정렬하여 실제 로또 용지에 기입하기 편하도록 제공합니다.</p>
+                </article>
+            </div>
+        </section>
+
+        <div class="wrap reveal">
+            <section class="cta">
+                <h2>당신의 당첨을 진심으로 응원합니다!</h2>
+                <p>이 번호가 당신의 소중한 꿈을 이루는 시작이 되길 바랍니다.</p>
+                <a class="btn" href="https://www.dhlottery.co.kr/" target="_blank" rel="noopener noreferrer">당첨 결과 확인하기 ↗</a>
+            </section>
+        </div>
+    </main>
+
+    <footer class="wrap">
+        <span class="logo">lucky<span>lotto</span>.</span>
+        <span>순수 학습 및 재미를 위한 로또 번호 생성 서비스입니다.</span>
+        <a href="https://www.dhlottery.co.kr/" target="_blank" rel="noopener noreferrer">동행복권 공식 홈페이지 ↗</a>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
