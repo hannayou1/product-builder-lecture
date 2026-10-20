@@ -13,6 +13,7 @@
         <nav aria-label="주 메뉴">
             <a href="#generator">번호 생성</a>
             <a href="#how-it-works">사용 방법</a>
+            <a href="#contact">제휴 문의</a>
             <a class="nav-cta" href="https://www.dhlottery.co.kr/" target="_blank" rel="noopener noreferrer">동행복권 바로가기 ↗</a>
             <button id="theme-toggle" class="theme-toggle" type="button" aria-label="다크 모드로 전환" title="테마 변경">
                 <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -32,7 +33,56 @@
             </button>
         </nav>
     </header>
+<section id="contact" class="section wrap">
+  <div class="section-head">
+    <div>
+      <div class="eyebrow">03 / CONTACT</div>
+      <h2>제휴 문의</h2>
+    </div>
+    <p>제휴 및 협업 제안을 남겨주세요.</p>
+  </div>
 
+  <form
+    class="contact-form"
+    action="https://formspree.io/f/mwlvjyzq"
+    method="POST"
+  >
+    <label for="contact-name">이름 / 회사명</label>
+    <input
+      id="contact-name"
+      type="text"
+      name="name"
+      placeholder="이름 또는 회사명을 입력하세요"
+      autocomplete="organization"
+      maxlength="100"
+      required
+    >
+
+    <label for="contact-email">이메일</label>
+    <input
+      id="contact-email"
+      type="email"
+      name="email"
+      placeholder="답변받을 이메일을 입력하세요"
+      autocomplete="email"
+      required
+    >
+
+    <label for="contact-message">문의 내용</label>
+    <textarea
+      id="contact-message"
+      name="message"
+      rows="6"
+      placeholder="제휴 및 협업 내용을 입력하세요"
+      maxlength="5000"
+      required
+    ></textarea>
+
+    <button type="submit" class="btn primary">
+      제휴 문의 보내기 ↗
+    </button>
+  </form>
+</section>
     <main>
         <section class="hero wrap reveal">
             <div>
