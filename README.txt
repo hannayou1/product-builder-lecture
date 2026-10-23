@@ -2,7 +2,7 @@ Lucky Lotto 수정본
 
 이 폴더의 파일을 기존 프로젝트 루트에 복사하고 Git 커밋/푸시하여 Vercel에 배포하세요. 기존 파일은 먼저 백업하세요. 이 패키지는 실제 사이트에 배포되지 않았습니다.
 
-index.html, main.js, style.css를 함께 교체하고 나머지 HTML, ads.txt, robots.txt, sitemap.xml, vercel.json도 추가하세요. 기존 동물상 테스트 파일은 삭제하지 않았으며 이 패키지 메뉴에서는 연결하지 않습니다. 기존 다른 페이지가 있으면 정책, 탐색과 링크를 함께 검토하세요.
+index.html, main.js, style.css를 함께 교체하고 나머지 HTML, ads.txt, robots.txt, sitemap.xml, vercel.json도 추가하세요. 상단·하단 메뉴와 홈 소개 영역에 animal-test.html 링크를 복구했습니다. 기존 animal-test.html 및 해당 페이지가 사용하는 모델·스크립트·이미지 파일은 반드시 그대로 유지하세요. 테스트 원본은 첨부되지 않아 이 ZIP에는 포함되지 않습니다. 이 ZIP만 빈 프로젝트에 올리면 테스트 링크가 404가 됩니다. 사진 처리 방식은 원본을 확인하지 않아 단정하여 안내하지 않았습니다. 기존 다른 페이지가 있으면 정책, 탐색과 링크를 함께 검토하세요.
 
 사이트 주소를 변경했다면 robots.txt와 sitemap.xml의 도메인도 실제 주소로 변경하세요.
 

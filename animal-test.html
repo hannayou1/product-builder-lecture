@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="사진으로 알아보는 강아지상·고양이상 테스트">
+  <title>동물상 테스트 🐶🐱</title>
+
+  <!-- Google AdSense -->
+<script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2391092694383313"
+  crossorigin="anonymous"
+></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f8f2;
+      color: #28382d;
+      font-family: Arial, "Malgun Gothic", sans-serif;
+    }
+
+    header {
+      max-width: 900px;
+      margin: auto;
+      padding: 24px 20px;
+    }
+
+    header a {
+      color: #37734d;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 560px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .animals {
+      margin-bottom: 16px;
+      font-size: 64px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 7vw, 38px);
+      letter-spacing: -1px;
+    }
+
+    .intro {
+      margin-bottom: 30px;
+      color: #737d70;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid #e0e5d9;
+      border-radius: 24px;
+      background: white;
+      box-shadow: 0 12px 40px #253b2010;
+    }
+
+    .upload-box {
+      display: flex;
+      min-height: 240px;
+      padding: 24px;
+      border: 2px dashed #b8c9ac;
+      border-radius: 16px;
+      background: #f6f9f1;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .upload-box:hover,
+    .upload-box.dragging {
+      border-color: #37734d;
+      background: #edf5e6;
+    }
+
+    .upload-box:focus-within {
+      outline: 3px solid #8db779;
+      outline-offset: 4px;
+    }
+
+    .upload-icon {
+      display: block;
+      margin-bottom: 15px;
+      font-size: 38px;
+    }
+
+    .upload-box strong {
+      font-size: 15px;
+    }
+
+    .upload-box small {
+      display: block;
+      margin-top: 10px;
+      color: #7c8874;
+      font-size: 12px;
+    }
+
+    .file-input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+    }
+
+    #preview {
+      display: block;
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 12px;
+      object-fit: contain;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      border-radius: 12px;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .primary {
+      margin-top: 18px;
+      background: #37734d;
+      color: white;
+    }
+
+    .primary:disabled {
+      background: #b1bdab;
+      cursor: not-allowed;
+    }
+
+    .secondary {
+      margin-top: 20px;
+      border: 1px solid #ced9c6;
+      background: white;
+      color: #37734d;
+    }
+
+    #status {
+      min-height: 22px;
+      margin: 16px 0 0;
+      color: #66775c;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    #status.error {
+      color: #b33f32;
+    }
+
+    #result {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid #e4e9de;
+    }
+
+    #result-title {
+      margin: 0 0 12px;
+      font-size: 30px;
+    }
+
+    #result-description {
+      color: #737d70;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .score-row {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .score-label {
+      display: flex;
+      margin-bottom: 8px;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    .score-track {
+      height: 12px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #edf0e8;
+    }
+
+    .score-fill {
+      height: 100%;
+      border-radius: 20px;
+    }
+
+    .dog {
+      background: #d7a34a;
+    }
+
+    .cat {
+      background: #779e70;
+    }
+
+    .other {
+      background: #8295ae;
+    }
+
+    .notice {
+      margin-top: 22px;
+      color: #808a79;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    footer {
+      color: #92998c;
+      font-size: 12px;
+      text-align: center;
+      padding: 0 20px 30px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        padding: 18px;
+      }
+
+      .upload-box {
+        min-height: 210px;
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html">← 로또 페이지로 돌아가기</a>
+  </header>
+
+  <main>
+    <div class="animals" aria-hidden="true">🐶 🐱</div>
+
+    <h1>나는 어떤 동물상일까?</h1>
+
+    <p class="intro">
+      순둥순둥 강아지상? 도도한 고양이상?<br>
+      사진 한 장으로 나의 동물상을 확인해보세요!
+    </p>
+
+    <section class="card" aria-label="동물상 테스트">
+      <label class="upload-box" id="upload-box">
+        <input
+          class="file-input"
+          id="photo-input"
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          aria-label="분석할 사진 선택"
+        >
+
+        <div id="upload-guide">
+          <span class="upload-icon" aria-hidden="true">📷</span>
+          <strong>클릭해서 사진을 선택해주세요</strong>
+          <small>사진을 끌어다 놓아도 돼요</small>
+          <small>JPG · PNG · WEBP / 최대 10MB</small>
+        </div>
+
+        <img
+          id="preview"
+          alt="분석할 사진 미리보기"
+          hidden
+        >
+      </label>
+
+      <p id="status" role="status" aria-live="polite">
+        얼굴이 잘 보이는 정면 사진을 선택해주세요.
+      </p>
+
+      <button
+        id="analyze-button"
+        class="primary"
+        type="button"
+        disabled
+      >
+        동물상 분석하기 🔍
+      </button>
+
+      <section id="result" aria-label="분석 결과" hidden>
+        <h2 id="result-title"></h2>
+        <p id="result-description"></p>
+        <div id="score-list"></div>
+      </section>
+
+      <button
+        id="reset-button"
+        class="secondary"
+        type="button"
+        hidden
+      >
+        다른 사진으로 다시 하기 ↻
+      </button>
+
+      <p class="notice">
+        🔒 사진은 서버에 전송하거나 저장하지 않아요.<br>
+        분석은 브라우저 안에서 진행됩니다.<br><br>
+        동물 사진 분류 모델을 응용한 재미용 테스트입니다.<br>
+        표시된 점수는 모델의 분류 점수이며,<br>
+        외모에 대한 객관적인 평가가 아닙니다.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    Lucky Lotto · 동물상 테스트 ·
+    <a href="privacy.html">개인정보 처리방침</a>
+  </footer>
+
+  <!-- AI 분석 라이브러리 -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.5/dist/teachablemachine-image.min.js"></script>
+
+  <script>
+    // 네가 만든 Teachable Machine 모델
+    const MODEL_URL =
+      "https://teachablemachine.withgoogle.com/models/RBxj2S2EE/";
+
+    const photoInput = document.getElementById("photo-input");
+    const uploadBox = document.getElementById("upload-box");
+    const uploadGuide = document.getElementById("upload-guide");
+    const preview = document.getElementById("preview");
+    const statusText = document.getElementById("status");
+    const analyzeButton = document.getElementById("analyze-button");
+    const resetButton = document.getElementById("reset-button");
+    const result = document.getElementById("result");
+    const resultTitle = document.getElementById("result-title");
+    const resultDescription =
+      document.getElementById("result-description");
+    const scoreList = document.getElementById("score-list");
+
+    let modelPromise = null;
+    let imageUrl = null;
+    let isAnalyzing = false;
+    let selectionId = 0;
+
+    function setStatus(message, isError = false) {
+      statusText.textContent = message;
+      statusText.classList.toggle("error", isError);
+    }
+
+    // 처음 분석할 때 모델을 불러오고, 이후에는 재사용합니다.
+    function loadModel() {
+      if (!modelPromise) {
+        modelPromise = (async function () {
+          if (!window.tf || !window.tmImage) {
+            throw new Error("분석 라이브러리를 불러오지 못했습니다.");
+          }
+
+          await tf.ready();
+
+          const model = await tmImage.load(
+            MODEL_URL + "model.json",
+            MODEL_URL + "metadata.json"
+          );
+
+          if (model.getTotalClasses() < 2) {
+            throw new Error("모델에 두 개 이상의 분류가 필요합니다.");
+          }
+
+          return model;
+        })().catch(function (error) {
+          modelPromise = null;
+          throw error;
+        });
+      }
+
+      return modelPromise;
+    }
+
+    function getAnimalInfo(className) {
+      if (/dog|puppy|강아지/i.test(className)) {
+        return {
+          title: "🐶 강아지상",
+          color: "dog",
+          description:
+            "모델이 이 사진을 강아지 쪽으로 더 가깝게 분류했어요!"
+        };
+      }
+
+      if (/cat|kitten|고양이/i.test(className)) {
+        return {
+          title: "🐱 고양이상",
+          color: "cat",
+          description:
+            "모델이 이 사진을 고양이 쪽으로 더 가깝게 분류했어요!"
+        };
+      }
+
+      return {
+        title: className,
+        color: "other",
+        description: "모델이 가장 가깝게 분류한 결과예요."
+      };
+    }
+
+    async function selectPhoto(file) {
+      if (!file || isAnalyzing) return;
+
+      const allowedTypes = [
+        "image/jpeg",
+        "image/png",
+        "image/webp"
+      ];
+
+      if (!allowedTypes.includes(file.type)) {
+        setStatus("JPG, PNG, WEBP 사진을 선택해주세요.", true);
+        return;
+      }
+
+      if (file.size > 10 * 1024 * 1024) {
+        setStatus("10MB 이하의 사진을 선택해주세요.", true);
+        return;
+      }
+
+      const currentSelection = ++selectionId;
+
+      if (imageUrl) {
+        URL.revokeObjectURL(imageUrl);
+      }
+
+      imageUrl = URL.createObjectURL(file);
+
+      analyzeButton.disabled = true;
+      analyzeButton.hidden = false;
+      result.hidden = true;
+      resetButton.hidden = false;
+      preview.hidden = true;
+      uploadGuide.hidden = false;
+
+      setStatus("사진을 준비하고 있어요…");
+
+      try {
+        preview.src = imageUrl;
+        await preview.decode();
+
+        // 다른 사진이 선택됐다면 이전 작업은 중단합니다.
+        if (currentSelection !== selectionId) return;
+
+        preview.hidden = false;
+        uploadGuide.hidden = true;
+        analyzeButton.disabled = false;
+
+        setStatus("사진이 준비됐어요. 분석 버튼을 눌러주세요!");
+      } catch (error) {
+        if (currentSelection !== selectionId) return;
+
+        preview.removeAttribute("src");
+
+        setStatus(
+          "사진을 읽지 못했어요. 다른 사진을 선택해주세요.",
+          true
+        );
+      }
+    }
+
+    function displayResults(predictions) {
+      const sorted = [...predictions].sort(function (a, b) {
+        return b.probability - a.probability;
+      });
+
+      const top = getAnimalInfo(sorted[0].className);
+      const isClose =
+        sorted.length > 1 &&
+        sorted[0].probability - sorted[1].probability < 0.1;
+
+      resultTitle.textContent = isClose
+        ? "🐶🐱 두 매력이 비슷해요!"
+        : top.title;
+
+      resultDescription.textContent = isClose
+        ? "두 분류의 점수가 비슷하게 나왔어요. 다른 사진으로도 테스트해보세요!"
+        : top.description;
+
+      scoreList.replaceChildren();
+
+      sorted.forEach(function (prediction) {
+        const animal = getAnimalInfo(prediction.className);
+        const percentage = prediction.probability * 100;
+
+        const row = document.createElement("div");
+        row.className = "score-row";
+
+        const label = document.createElement("div");
+        label.className = "score-label";
+
+        const name = document.createElement("span");
+        name.textContent = animal.title;
+
+        const score = document.createElement("strong");
+        score.textContent = percentage.toFixed(1) + "%";
+
+        label.append(name, score);
+
+        const track = document.createElement("div");
+        track.className = "score-track";
+
+        const fill = document.createElement("div");
+        fill.className = "score-fill " + animal.color;
+        fill.style.width = percentage + "%";
+
+        track.appendChild(fill);
+        row.append(label, track);
+        scoreList.appendChild(row);
+      });
+
+      result.hidden = false;
+    }
+
+    photoInput.addEventListener("change", function (event) {
+      selectPhoto(event.target.files[0]);
+    });
+
+    ["dragenter", "dragover"].forEach(function (eventName) {
+      uploadBox.addEventListener(eventName, function (event) {
+        event.preventDefault();
+
+        if (!isAnalyzing) {
+          uploadBox.classList.add("dragging");
+        }
+      });
+    });
+
+    ["dragleave", "drop"].forEach(function (eventName) {
+      uploadBox.addEventListener(eventName, function (event) {
+        event.preventDefault();
+        uploadBox.classList.remove("dragging");
+      });
+    });
+
+    uploadBox.addEventListener("drop", function (event) {
+      selectPhoto(event.dataTransfer.files[0]);
+    });
+
+    analyzeButton.addEventListener("click", async function () {
+      if (isAnalyzing || !preview.naturalWidth) return;
+
+      isAnalyzing = true;
+      photoInput.disabled = true;
+      resetButton.disabled = true;
+      analyzeButton.disabled = true;
+      analyzeButton.textContent = "분석 중…";
+
+      setStatus(
+        "AI 모델을 불러오고 있어요. 처음에는 조금 걸릴 수 있어요."
+      );
+
+      try {
+        const model = await loadModel();
+
+        setStatus("사진을 분석하고 있어요…");
+
+        // 사진 중앙을 정사각형으로 잘라 모델에 전달합니다.
+        const canvas = document.createElement("canvas");
+        canvas.width = 224;
+        canvas.height = 224;
+
+        const context = canvas.getContext("2d");
+        const side = Math.min(
+          preview.naturalWidth,
+          preview.naturalHeight
+        );
+
+        context.drawImage(
+          preview,
+          (preview.naturalWidth - side) / 2,
+          (preview.naturalHeight - side) / 2,
+          side,
+          side,
+          0,
+          0,
+          canvas.width,
+          canvas.height
+        );
+
+        const predictions = await model.predict(canvas);
+
+        displayResults(predictions);
+        analyzeButton.hidden = true;
+
+        setStatus("분석 완료! 아래에서 결과를 확인해보세요.");
+      } catch (error) {
+        console.error(error);
+
+        setStatus(
+          "분석하지 못했어요. 인터넷 연결과 모델 공개 상태를 확인하고 다시 시도해주세요.",
+          true
+        );
+      } finally {
+        isAnalyzing = false;
+        photoInput.disabled = false;
+        resetButton.disabled = false;
+        analyzeButton.disabled = false;
+        analyzeButton.textContent = "동물상 분석하기 🔍";
+      }
+    });
+
+    resetButton.addEventListener("click", function () {
+      selectionId++;
+
+      if (imageUrl) {
+        URL.revokeObjectURL(imageUrl);
+        imageUrl = null;
+      }
+
+      photoInput.value = "";
+      preview.removeAttribute("src");
+      preview.hidden = true;
+      uploadGuide.hidden = false;
+      result.hidden = true;
+      scoreList.replaceChildren();
+      resetButton.hidden = true;
+      analyzeButton.hidden = false;
+      analyzeButton.disabled = true;
+
+      setStatus("새로운 사진을 선택해주세요.");
+      photoInput.focus();
+    });
+  </script>
+</body>
+</html>
