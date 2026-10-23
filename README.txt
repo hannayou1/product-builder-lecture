@@ -16,3 +16,7 @@ Google 품질 안내에 맞춰 관련 없는 메뉴, 과장된 당첨 유도 문
 https://adsense-ko.googleblog.com/2012/09/2.html
 https://support.google.com/adsense/answer/48182?hl=ko
 https://support.google.com/publisherpolicies/answer/10437795?hl=ko
+
+모든 HTML 6개에 Google Analytics 4 태그(G-LWQYWLYMVZ)를 head 안에 추가했습니다. 기존 animal-test.html은 원본이 없어 이 패키지에서 수정하지 못했습니다. 해당 파일에도 같은 태그를 추가하세요. 개인정보 처리방침에 GA4 이용 안내를 반영했습니다.
+
+추가 수정: animal-test.html 원본을 받아 Google 태그를 추가하고 패키지에 포함했습니다. 앞선 원본 미포함 안내는 더 이상 적용되지 않습니다.
